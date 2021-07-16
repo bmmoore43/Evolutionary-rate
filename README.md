@@ -86,7 +86,7 @@ How to calculate dN/dS using PAML software
         python get_all_genepair_from_list.py <list of genes>
         
 
-6. install clustalw and Python/2.7.9 using anaconda and activate
+6. install clustalw and Python/2.7.9 using anaconda and activate **Note: must be in bash for this to work**
 
        conda create -n clustalw2 -c biobuilds -y clustalw python=2.7
        conda activate clustalw2
