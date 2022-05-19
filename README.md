@@ -1,30 +1,55 @@
 # Evolutionary-rate
 How to calculate dN/dS using PAML software
 
-## dN/dS analysis pairwise analysis
+## download and install software
 
 1. get PAML software
 
-       wget http://abacus.gene.ucl.ac.uk/software/paml4.8a.macosx.tgz
+       wget http://abacus.gene.ucl.ac.uk/software/
+       
+   NOTE: the macOS version does not work (paml4.8a.macosx.tgz), so use the unix version for mac: paml4.9j.tgz    
       
 2. install paml software:
   
-        tar xf paml4.8a.macosx.tgz
-        cd paml4.8
-        cd src
-        make -f Makefile
-        ls -lF
-        rm *.o # this step is not really necessary unless you have the .o files
-        mv baseml basemlg codeml pamp evolver yn00 chi2 ../bin
-        cd ../
-        ls -lF bin
-        bin/baseml
-        bin/codeml
-        bin/evolver
-        cp rst1 bin/
-        cd ../
-        rm paml4.8a.macosx.tgz
-        
+       tar -xf paml4.9j.tgz
+       cd paml4.9j
+       rm bin/*.exe
+       cd src
+       make -f Makefile
+       ls -lF
+       rm *.o
+       mv baseml basemlg codeml pamp evolver yn00 chi2 ../bin
+       cd ..
+       ls -lF bin
+       bin/baseml
+       bin/codeml
+       bin/evolver
+
+3. get pal2nal software. 
+
+   You need this to map nucleotide/cds sequences onto the protein alignment. This greatly reduces misalignment of DNA sequences.
+   
+   http://www.bork.embl.de/pal2nal/#Download
+   
+   tar file: pal2nal.v14.tar.gz
+   
+4. untar pal2nal
+
+       tar -xzf pal2nal.v14.tar.gz
+       
+5. change directory to where perl script is then try running to see if works
+
+        cd pal2nal.v14
+        perl pal2nal.pl 
+
+   Should show help and how to run
+   
+## build cds tree to run analysis
+
+
+
+## dN/dS analysis pairwise analysis
+
 3. copy control file (yn00.ctl) to working directory (should be in paml directory)
 
    yn00.ctl:
@@ -85,33 +110,4 @@ How to calculate dN/dS using PAML software
   
         python get_all_genepair_from_list.py <list of genes>
         
-
-6. install clustalw and Python/2.7.9 using anaconda and activate **Note: must be in bash for this to work**
-
-       conda create -n clustalw2 -c biobuilds -y clustalw python=2.7
-       conda activate clustalw2
-       
-   after run, deactivate:
-   
-       conda deactivate
-
-7. running AlnUtility.py to get pairwise dN/dS scores
-  
-  i. need to copy the following into directory with AlnUtility.py (dir/ is the name of the directory where AlnUtility.py is)
-
-         cp FastaManager.py dir/
-         cp Translation.py dir/
-         cp FileUtility.py dir/
-         cp ParseBlast.py dir/
-         cp BlastUtility.py dir/
-         cp SingleLinkage.py dir/
-         cp TreeUtility.py* dir/
-         cp DrawBlocks.py* dir/
-         cp SVGWriter.py* dir/
-         cp kaksToolsHacked.py* dir/
-         cp DatabaseOp.py* dir/
-          
-  8. run dN/dS script (AlnUtility.py)
-    
-          python AlnUtility.py -f rate_pair -pep <protein fasta> -cds <cds fasta> -p paml -paml <paml directory> -clustal T -pairs <gene pair file>
           
