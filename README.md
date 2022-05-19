@@ -108,7 +108,15 @@ How to calculate dN/dS using PAML software
 
 ## dN/dS models using PAML
 1. designate tree node where you want model to be. You can do this manually (open tree file and edit) or you can use EasyCodeML to label the tree.
-
+2. if labeling manually:
+   
+4. if using EasyCodeML:
+   download:
+       https://github.com/BioEasy/EasyCodeML
+   run:
+       java -jar EasyCodeML.jar
+       
+   when GUI pops up, load tree and alignment file, then press label. When finished export tree.
 
 ## dN/dS analysis pairwise analysis
 
