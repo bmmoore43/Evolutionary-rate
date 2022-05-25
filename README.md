@@ -194,6 +194,11 @@ These models compare a clade in the tree to all other leaves (genes) in the tree
 5. Run Codeml. NOTE: codeml.ctl file needs to be in the same directory as the alignmnet and the tree files. You then have to run codeml from where the program is on your computer.
 
        /Users/Beth/Desktop/Github/gene_rate/paml4.9j/bin/codeml
+       
+6. Output files of note:
+       a. result file: contains alignment, site pattern counts, codon usage in sequences, codon frequencies in data, and positive sites for foreground lineages. Bayes Empirical Bayes (BEB) analysis should be use to assess positive sites.
+       b. rst file: supplemental results with N and S for each branch and reconstructed ancestral sequences for each node.
+       c. rst1 file: List of sites with changes according to ancestral reconstruction
 
 ## OLD analysis
 ## dN/dS analysis pairwise analysis
