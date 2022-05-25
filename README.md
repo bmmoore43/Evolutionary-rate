@@ -44,6 +44,9 @@ How to calculate dN/dS using PAML software
    Should show help and how to run
    
 ## build cds tree to run analysis
+*NOTE: for FastaManager.py and gff_manager.py please see Utilities repository:
+https://github.com/bmmoore43/Utilities
+
 1. Make CDS tree by first aligning cds sequences to protein sequence
 2. obtain cds sequences:
   i. wget or download from website cds sequence
@@ -62,6 +65,9 @@ How to calculate dN/dS using PAML software
    Result: gff_filt file that contains only lines with gene protein name
    
    IF NEEDED:
+   *NOTE: for installing/ using BLAST, see https://github.com/bmmoore43/Building-gene-trees
+   
+   
    iii. use BLAST to match protein file to transcript file:
    
    make BLAST database using protein file:
@@ -91,6 +97,7 @@ How to calculate dN/dS using PAML software
        python FastaManager.py -f rename -fasta <fasta_file> -name <gene_list>
        
 6. Align protein file using mafft:
+   *NOTE for installing and using MAFFT see: https://github.com/bmmoore43/Building-gene-trees
 
        mafft --auto --anysymbol <protein_fasta> > <output_name>
        
@@ -104,7 +111,7 @@ How to calculate dN/dS using PAML software
    NOTE: if certain genes won't align, check their alignment to the protein gene using tBLASTn. Some may cds genes have small percent ID because of large gaps/ incomplete transcript. Remove these from analysis. If match it very high (~99% ID) it is likely the cds gene is just reversed. Calculate reverse complement and rerun.
 
 ## make cds tree 
-1. follow raxml-ng instructions to make the tree
+1. follow raxml-ng instructions to make the tree, see: https://github.com/bmmoore43/Building-gene-trees
 
 ## dN/dS models using PAML
 These models compare a clade in the tree to all other leaves (genes) in the tree. The models determine the probablity of positive selection on an amino acid residue for that particular clade.
