@@ -78,6 +78,8 @@ https://github.com/bmmoore43/Utilities
    
        ncbi-blast-2.10.0+/bin/blastx -num_threads <# of computer nodes> -db <protein_fasta> -query <nucle_fasta> -out <output_results.txt> -outfmt 6
        
+   **NOTE: can use tblastn for comparing a protein query to a nucleotide databse. If this option is used, database should be built using -dbtype nucl**
+   
    iv. parse BLAST results to get recipricol best match
    
        python parse_blastp_files_get_bestmatches.py <directory with BLAST output files ending in .out or _results.txt>
